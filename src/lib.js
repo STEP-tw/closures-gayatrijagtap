@@ -47,10 +47,36 @@ const makeDeltaTracker = function( oldDelta ) {
   return reference;
 };
 
-const makeFiboGenerator = undefined; 
+const makeFiboGenerator = function(firstTerm,secondTerm) {
+  let count = 0;
+  if(firstTerm == undefined) {
+    firstTerm = 0;
+    secondTerm = 1;
+  }
+  if(firstTerm != undefined && secondTerm == undefined) {
+    secondTerm = firstTerm;
+    firstTerm = 0;
+  }
+  const getNextFiboNum = function() {
+    if(count == 0){
+      count++;
+      return firstTerm;
+    }
+    if(count == 1) {
+      count++;
+      return secondTerm;
+    }
+    let nextTerm = firstTerm+secondTerm;
+    firstTerm = secondTerm;
+    secondTerm = nextTerm;
+    return nextTerm;
+  }
+  let reference = getNextFiboNum;
+  return reference;
+}
 
 const makeCycler = undefined;/*function(inputCycle) {
-  let cycleElements = inputCycle;
+  const cycleElements = inputCycle;
   let cycle = cycleElements.length;
   let count = 0;
   const cycler = function() {
@@ -63,8 +89,8 @@ const makeCycler = undefined;/*function(inputCycle) {
   }
   let reference = cycler;
   return reference;
-};
-*/
+};*/
+
 const curry = function(inputFunction,firstArg) {
   const functionCaller = function(secondArg,thirdArg) {
     return inputFunction(firstArg,secondArg,thirdArg);
