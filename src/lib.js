@@ -47,9 +47,33 @@ const makeDeltaTracker = function( oldDelta ) {
   return reference;
 };
 
-const makeFiboGenerator = undefined;
-const makeCycler = undefined;
-const curry = undefined;
+const makeFiboGenerator = undefined; 
+
+const makeCycler = undefined;/*function(inputCycle) {
+  let cycleElements = inputCycle;
+  let cycle = cycleElements.length;
+  let count = 0;
+  const cycler = function() {
+    if(count == cycle) {
+      count = 0;
+    }
+    let result = cycleElements[count];
+    count++;
+    return result;
+  }
+  let reference = cycler;
+  return reference;
+};
+*/
+const curry = function(inputFunction,firstArg) {
+  const functionCaller = function(secondArg,thirdArg) {
+    return inputFunction(firstArg,secondArg,thirdArg);
+  }
+  let reference = functionCaller;
+  return functionCaller;
+}
+
+
 const compose = undefined;
 
 exports.makeConstant=makeConstant;
