@@ -30,7 +30,23 @@ const makeCounterFromZero = function() {
   return reference;
 };
 
-const makeDeltaTracker = undefined;
+const makeDeltaTracker = function( oldDelta ) {
+  let deltaInfo = {};
+  const trackDelta = function( inputDelta ) {
+    if(inputDelta == undefined ) {
+      inputDelta = 0;
+    }
+    deltaInfo.old = oldDelta;
+    deltaInfo.delta = inputDelta;
+    let newDelta = oldDelta+inputDelta;
+    deltaInfo.new = newDelta;
+    oldDelta = newDelta;
+    return deltaInfo;
+  }
+  let reference = trackDelta;
+  return reference;
+};
+
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;
