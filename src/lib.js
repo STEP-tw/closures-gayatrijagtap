@@ -8,7 +8,16 @@ const makeConstant = function( input ) {
   return reference;
 };
 
-const makeCounterFromN = undefined;
+const makeCounterFromN = function( initialCount ) {
+  let initCount = initialCount;
+  const count = function() {
+    let finalCount = initCount;
+    initCount++;
+    return finalCount;
+  }
+  let reference = count;
+  return reference;
+};
 const makeCounterFromZero = undefined;
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
