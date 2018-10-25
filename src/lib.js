@@ -31,8 +31,8 @@ const makeCounterFromZero = function() {
 };
 
 const makeDeltaTracker = function( oldDelta ) {
-  let deltaInfo = {};
   const trackDelta = function( inputDelta ) {
+    let deltaInfo = {};
     if(inputDelta == undefined ) {
       inputDelta = 0;
     }
