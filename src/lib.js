@@ -75,8 +75,9 @@ const makeFiboGenerator = function(firstTerm,secondTerm) {
   return reference;
 }
 
-const makeCycler = undefined;/*function(inputCycle) {
-  const cycleElements = inputCycle;
+const makeCycler = function(inputCycle) {
+  let cycleElements = [];
+  inputCycle.map(function(element) { cycleElements.push(element); return; });
   let cycle = cycleElements.length;
   let count = 0;
   const cycler = function() {
@@ -89,7 +90,7 @@ const makeCycler = undefined;/*function(inputCycle) {
   }
   let reference = cycler;
   return reference;
-};*/
+};
 
 const curry = function(inputFunction,firstArg) {
   const functionCaller = function(secondArg,thirdArg) {
