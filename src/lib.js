@@ -18,7 +18,18 @@ const makeCounterFromN = function( initialCount ) {
   let reference = count;
   return reference;
 };
-const makeCounterFromZero = undefined;
+
+const makeCounterFromZero = function() {
+  let initialCount = 0;
+  const count = function() {
+    let finalCount = initialCount;
+    initialCount++;
+    return finalCount;
+  }
+  let reference = count;
+  return reference;
+};
+
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
