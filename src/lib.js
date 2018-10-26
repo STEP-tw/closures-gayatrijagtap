@@ -58,40 +58,29 @@ const makeFiboGenerator = function(firstTerm,secondTerm) {
   return reference;
 }
 
-const makeCycler = function(inputCycle) {
+const makeCycler = function( elements ) {
   let cycleElements = [];
-  inputCycle.map(function(element) { cycleElements.push(element); return; });
-  let cycle = cycleElements.length;
-  let count = 0;
-  const cycler = function() {
-    if(count == cycle) {
-      count = 0;
-    }
-    let result = cycleElements[count];
-    count++;
+  elements.map(function(element) { cycleElements.push(element); return; } );
+  return function() {
+    let result = cycleElements.shift();
+    cycleElements.push(result);
     return result;
   }
-  let reference = cycler;
-  return reference;
 };
 
 const curry = function(inputFunction,firstArg) {
-  const functionCaller = function(secondArg,thirdArg) {
+  return function(secondArg,thirdArg) {
     return inputFunction(firstArg,secondArg,thirdArg);
   }
-  let reference = functionCaller;
-  return functionCaller;
 }
 
 
 const compose = function( firstFunction,secondFunction ) {
-  const functionCaller = function(firstArg,secondArg) {
+  return function(firstArg,secondArg) {
     let result = secondFunction(firstArg,secondArg);
     let finalResult = firstFunction(result);
     return finalResult;
   }
-  let reference = functionCaller;
-  return functionCaller;
 }
 
 exports.makeConstant=makeConstant;
