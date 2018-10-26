@@ -1,11 +1,8 @@
 const makeConstant = function( input ) {
-  let value = input;
-  const createConstant = function() {
-    const constant = value;
+  const constant = input;
+  return function() {
     return constant;
   }
-  let reference = createConstant;
-  return reference;
 };
 
 const makeCounterFromN = function( initialCount ) {
