@@ -6,14 +6,11 @@ const makeConstant = function( input ) {
 };
 
 const makeCounterFromN = function( initialCount ) {
-  let initCount = initialCount;
-  const count = function() {
-    let finalCount = initCount;
-    initCount++;
+  return function() {
+    finalCount = initialCount;
+    initialCount++;
     return finalCount;
   }
-  let reference = count;
-  return reference;
 };
 
 const makeCounterFromZero = function() {
