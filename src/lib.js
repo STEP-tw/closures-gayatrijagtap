@@ -15,30 +15,19 @@ const makeCounterFromN = function( initialCount ) {
 
 const makeCounterFromZero = function() {
   let initialCount = 0;
-  const count = function() {
+  return function() {
     let finalCount = initialCount;
     initialCount++;
     return finalCount;
   }
-  let reference = count;
-  return reference;
 };
 
 const makeDeltaTracker = function( oldDelta ) {
-  const trackDelta = function( inputDelta ) {
-    let deltaInfo = {};
-    if(inputDelta == undefined ) {
-      inputDelta = 0;
-    }
-    deltaInfo.old = oldDelta;
-    deltaInfo.delta = inputDelta;
-    let newDelta = oldDelta+inputDelta;
-    deltaInfo.new = newDelta;
-    oldDelta = newDelta;
+  return function( inputDelta = 0 ) {
+    let deltaInfo = {old:oldDelta, delta:inputDelta, new:oldDelta+inputDelta};
+    oldDelta = deltaInfo.new;
     return deltaInfo;
   }
-  let reference = trackDelta;
-  return reference;
 };
 
 const makeFiboGenerator = function(firstTerm,secondTerm) {
