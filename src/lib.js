@@ -30,32 +30,16 @@ const makeDeltaTracker = function( oldDelta ) {
   }
 };
 
-const makeFiboGenerator = function(firstTerm,secondTerm) {
-  let count = 0;
-  if(firstTerm == undefined) {
-    firstTerm = 0;
-    secondTerm = 1;
+const makeFiboGenerator = function(secondTerm = 1,firstTerm = 0) {
+  let previous = Math.min(firstTerm,secondTerm);
+  let current = Math.max(firstTerm,secondTerm)
+  return function() {
+    let result = previous;
+    let nextTerm = previous+current;
+    previous = current;
+    current = nextTerm;
+    return result;
   }
-  if(firstTerm != undefined && secondTerm == undefined) {
-    secondTerm = firstTerm;
-    firstTerm = 0;
-  }
-  const getNextFiboNum = function() {
-    if(count == 0){
-      count++;
-      return firstTerm;
-    }
-    if(count == 1) {
-      count++;
-      return secondTerm;
-    }
-    let nextTerm = firstTerm+secondTerm;
-    firstTerm = secondTerm;
-    secondTerm = nextTerm;
-    return nextTerm;
-  }
-  let reference = getNextFiboNum;
-  return reference;
 }
 
 const makeCycler = function( elements ) {
