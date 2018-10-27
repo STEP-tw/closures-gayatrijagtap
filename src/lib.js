@@ -7,19 +7,12 @@ const makeConstant = function( input ) {
 
 const makeCounterFromN = function( initialCount ) {
   return function() {
-    finalCount = initialCount;
-    initialCount++;
-    return finalCount;
+    return initialCount++;
   }
 };
 
 const makeCounterFromZero = function() {
-  let initialCount = 0;
-  return function() {
-    let finalCount = initialCount;
-    initialCount++;
-    return finalCount;
-  }
+  return makeCounterFromN(0);
 };
 
 const makeDeltaTracker = function( oldDelta ) {
